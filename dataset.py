@@ -2,9 +2,13 @@ import os
 from utils import load,dump,generate_token
 import carla
 from sensor import parse_lidar_data,parse_radar_data
+import cv2
 
 def save_image(image,path):
-    image.save_to_disk(path)
+    img = np.reshape(np.copy(image.raw_data), (image.height, image.width, 4)) 
+    resized = cv2.resize(img, (image.width // 2, image.height // 2), interpolation=cv2.INTER_LANCZOS4)
+    cv2.imwrite(path, resized, [int(cv2.IMWRITE_JPEG_QUALITY), 95])
+#     image.save_to_disk(path)
 
 def save_lidar_data(lidar_data,path):
     points = parse_lidar_data(lidar_data)
