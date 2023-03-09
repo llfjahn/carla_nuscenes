@@ -19,7 +19,7 @@ attributes:
 visibility:
   !include ./configs/visibility.yaml 
 
-scene_count: 1
+scene_count: 50
 
 worlds:  #map
   - 
