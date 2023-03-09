@@ -72,6 +72,7 @@ class Generator:
 
     def generate_new_random_dataset(self):
         print("generate new dataset!")
+        print("Town: ",capture_config["location"])
         self.dataset = Dataset(**self.config["dataset"])
         self.dataset.save()
         for sensor in self.config["sensors"]:
@@ -105,6 +106,7 @@ class Generator:
 
     def continue_generating_random_dataset(self):
         print("continue generating!")
+        print("Town: ",capture_config["location"])
 
         self.dataset = Dataset(**self.config["dataset"],load=True)
         for sensor in self.config["sensors"]:
@@ -163,7 +165,6 @@ class Generator:
 
 
             sample_token = ""
-            print("Town: ",scene_config["location"])
             for frame_count in range(int(scene_config["collect_time"]/self.collect_client.settings.fixed_delta_seconds)):
                 # print("frame count:",frame_count)
                 self.collect_client.tick()
