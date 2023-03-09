@@ -175,5 +175,27 @@ worlds:  #map
             calibrated_sensors:
               !include ./configs/calibrated_sensors.yaml
             description:
-              "Town07"              
+              "Town07"        
+  - 
+    map_name: "Town10HD"
+    map_category: "semantic_prior"
+    settings:
+      fixed_delta_seconds: 0.01
+    captures: #log
+      - 
+        date: "2023-01-22"
+        time: "10-45-20"
+        timezone: "+0800"
+        capture_vehicle: "c0003"
+        location: "Town10HD"
+        scenes:
+          - 
+            custom: False
+            collect_time: 20
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Town10HD"              
           
