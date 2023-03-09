@@ -139,8 +139,8 @@ class Client:
         self.ego_vehicle.get_actor().set_autopilot()
         self.trafficmanager.ignore_lights_percentage(self.ego_vehicle.get_actor(),100)
         self.trafficmanager.ignore_signs_percentage(self.ego_vehicle.get_actor(),100)
-        self.trafficmanager.ignore_vehicles_percentage(self.ego_vehicle.get_actor(),100)
-        self.trafficmanager.distance_to_leading_vehicle(self.ego_vehicle.get_actor(),0)
+        # self.trafficmanager.ignore_vehicles_percentage(self.ego_vehicle.get_actor(),100)
+        self.trafficmanager.distance_to_leading_vehicle(self.ego_vehicle.get_actor(),10)
         self.trafficmanager.vehicle_percentage_speed_difference(self.ego_vehicle.get_actor(),-20)
         self.trafficmanager.auto_lane_change(self.ego_vehicle.get_actor(), True)
 

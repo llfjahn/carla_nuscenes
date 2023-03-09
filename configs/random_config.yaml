@@ -5,7 +5,7 @@ dataset:
 client:
   host: 127.0.0.1
   port: 2000
-  time_out: 10.0
+  time_out: 1000.0
 
 sensors:
   !include ./configs/sensors.yaml
@@ -37,7 +37,7 @@ worlds:  #map
         scenes:
           - 
             custom: False
-            collect_time: 20
+            collect_time: 2
             keyframe_time: 0.5
             ego_bp_name: "vehicle.tesla.model3"
             calibrated_sensors:
@@ -59,7 +59,7 @@ worlds:  #map
         scenes:
           - 
             custom: False
-            collect_time: 20
+            collect_time: 2
             keyframe_time: 0.5
             ego_bp_name: "vehicle.tesla.model3"
             calibrated_sensors:
@@ -81,7 +81,7 @@ worlds:  #map
         scenes:
           - 
             custom: False
-            collect_time: 20
+            collect_time: 2
             keyframe_time: 0.5
             ego_bp_name: "vehicle.tesla.model3"
             calibrated_sensors:
@@ -103,7 +103,7 @@ worlds:  #map
         scenes:
           - 
             custom: False
-            collect_time: 20
+            collect_time: 2
             keyframe_time: 0.5
             ego_bp_name: "vehicle.tesla.model3"
             calibrated_sensors:
@@ -125,7 +125,7 @@ worlds:  #map
         scenes:
           - 
             custom: False
-            collect_time: 20
+            collect_time: 2
             keyframe_time: 0.5
             ego_bp_name: "vehicle.tesla.model3"
             calibrated_sensors:
@@ -147,7 +147,7 @@ worlds:  #map
         scenes:
           - 
             custom: False
-            collect_time: 20
+            collect_time: 2
             keyframe_time: 0.5
             ego_bp_name: "vehicle.tesla.model3"
             calibrated_sensors:
