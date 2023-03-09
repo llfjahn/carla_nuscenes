@@ -163,7 +163,7 @@ class Generator:
 
 
             sample_token = ""
-            print("Town: ",scene_config["description"])
+            print("Town: ",scene_config["location"])
             for frame_count in range(int(scene_config["collect_time"]/self.collect_client.settings.fixed_delta_seconds)):
                 # print("frame count:",frame_count)
                 self.collect_client.tick()
@@ -180,7 +180,7 @@ class Generator:
                                 if idx == len(sensor.get_data_list())-1:
                                     is_key_frame = True
                                 if is_key_frame:
-                                    print('key')
+                                    # print('key')
                                     samples_data_token[sensor.name] = self.dataset.update_sample_data(samples_data_token[sensor.name],calibrated_sensors_token[sensor.name],sample_token,ego_pose_token,is_key_frame,*self.collect_client.get_sample_data(sample_data))
 
                     for instance in self.collect_client.walkers+self.collect_client.vehicles:
