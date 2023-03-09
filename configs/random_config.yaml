@@ -51,7 +51,7 @@ worlds:  #map
       fixed_delta_seconds: 0.01
     captures: #log
       - 
-        date: "2023-01-09"
+        date: "2023-01-11"
         time: "10-45-20"
         timezone: "+0800"
         capture_vehicle: "c0003"
@@ -73,11 +73,11 @@ worlds:  #map
       fixed_delta_seconds: 0.01
     captures: #log
       - 
-        date: "2023-01-09"
+        date: "2023-01-12"
         time: "10-45-20"
         timezone: "+0800"
         capture_vehicle: "c0003"
-        location: "chengdu"
+        location: "Town03"
         scenes:
           - 
             custom: False
@@ -95,11 +95,11 @@ worlds:  #map
       fixed_delta_seconds: 0.01
     captures: #log
       - 
-        date: "2023-01-09"
+        date: "2023-01-13"
         time: "10-45-20"
         timezone: "+0800"
         capture_vehicle: "c0003"
-        location: "chengdu"
+        location: "Town04"
         scenes:
           - 
             custom: False
@@ -117,11 +117,11 @@ worlds:  #map
       fixed_delta_seconds: 0.01
     captures: #log
       - 
-        date: "2023-01-09"
+        date: "2023-01-15"
         time: "10-45-20"
         timezone: "+0800"
         capture_vehicle: "c0003"
-        location: "chengdu"
+        location: "Town05"
         scenes:
           - 
             custom: False
@@ -133,17 +133,17 @@ worlds:  #map
             description:
               "Town05"
   - 
-    map_name: "Town07"
+    map_name: "Town06"
     map_category: "semantic_prior"
     settings:
       fixed_delta_seconds: 0.01
     captures: #log
       - 
-        date: "2023-01-09"
+        date: "2023-01-21"
         time: "10-45-20"
         timezone: "+0800"
         capture_vehicle: "c0003"
-        location: "chengdu"
+        location: "Town06"
         scenes:
           - 
             custom: False
@@ -153,5 +153,27 @@ worlds:  #map
             calibrated_sensors:
               !include ./configs/calibrated_sensors.yaml
             description:
-              "Town07"
+              "Town06"
+  - 
+    map_name: "Town07"
+    map_category: "semantic_prior"
+    settings:
+      fixed_delta_seconds: 0.01
+    captures: #log
+      - 
+        date: "2023-01-22"
+        time: "10-45-20"
+        timezone: "+0800"
+        capture_vehicle: "c0003"
+        location: "Town07"
+        scenes:
+          - 
+            custom: False
+            collect_time: 2
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Town07"              
           
