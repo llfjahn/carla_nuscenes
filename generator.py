@@ -163,8 +163,9 @@ class Generator:
 
 
             sample_token = ""
+            print("Town: ",scene_config["description"])
             for frame_count in range(int(scene_config["collect_time"]/self.collect_client.settings.fixed_delta_seconds)):
-                print("frame count:",frame_count)
+                # print("frame count:",frame_count)
                 self.collect_client.tick()
                 if (frame_count+1)%int(scene_config["keyframe_time"]/self.collect_client.settings.fixed_delta_seconds) == 0:
                     sample_token = self.dataset.update_sample(sample_token,scene_token,*self.collect_client.get_sample())
