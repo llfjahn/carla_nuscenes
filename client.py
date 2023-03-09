@@ -202,9 +202,9 @@ class Client:
             else:
                 print(response.error)
         self.sensors = list(filter(lambda sensor:sensor.get_actor(),self.sensors))
-        for i in range(100):
-            print(i)     
-            self.world.tick()
+        # for i in range(100):
+        #     print(i)     
+        #     self.world.tick()
         print("generate random scene success!")        
 
     def destroy_scene(self):
