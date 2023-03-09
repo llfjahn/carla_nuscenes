@@ -23,6 +23,94 @@ scene_count: 1
 
 worlds:  #map
   - 
+    map_name: "Town01"
+    map_category: "semantic_prior"
+    settings:
+      fixed_delta_seconds: 0.01
+    captures: #log
+      - 
+        date: "2023-01-09"
+        time: "10-45-20"
+        timezone: "+0800"
+        capture_vehicle: "c0003"
+        location: "Town01"
+        scenes:
+          - 
+            custom: False
+            collect_time: 2
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Town01"
+  - 
+    map_name: "Town02"
+    map_category: "semantic_prior"
+    settings:
+      fixed_delta_seconds: 0.01
+    captures: #log
+      - 
+        date: "2023-01-09"
+        time: "10-45-20"
+        timezone: "+0800"
+        capture_vehicle: "c0003"
+        location: "Town02"
+        scenes:
+          - 
+            custom: False
+            collect_time: 2
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Town02"
+  - 
+    map_name: "Town03"
+    map_category: "semantic_prior"
+    settings:
+      fixed_delta_seconds: 0.01
+    captures: #log
+      - 
+        date: "2023-01-09"
+        time: "10-45-20"
+        timezone: "+0800"
+        capture_vehicle: "c0003"
+        location: "chengdu"
+        scenes:
+          - 
+            custom: False
+            collect_time: 2
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Town03"
+  - 
+    map_name: "Town04"
+    map_category: "semantic_prior"
+    settings:
+      fixed_delta_seconds: 0.01
+    captures: #log
+      - 
+        date: "2023-01-09"
+        time: "10-45-20"
+        timezone: "+0800"
+        capture_vehicle: "c0003"
+        location: "chengdu"
+        scenes:
+          - 
+            custom: False
+            collect_time: 2
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Town04"
+  - 
     map_name: "Town05"
     map_category: "semantic_prior"
     settings:
@@ -43,115 +131,27 @@ worlds:  #map
             calibrated_sensors:
               !include ./configs/calibrated_sensors.yaml
             description:
-              "Town01"
-  # - 
-  #   map_name: "Town02"
-  #   map_category: "semantic_prior"
-  #   settings:
-  #     fixed_delta_seconds: 0.01
-  #   captures: #log
-  #     - 
-  #       date: "2023-01-09"
-  #       time: "10-45-20"
-  #       timezone: "+0800"
-  #       capture_vehicle: "c0003"
-  #       location: "chengdu"
-  #       scenes:
-  #         - 
-  #           custom: False
-  #           collect_time: 2
-  #           keyframe_time: 0.5
-  #           ego_bp_name: "vehicle.tesla.model3"
-  #           calibrated_sensors:
-  #             !include ./configs/calibrated_sensors.yaml
-  #           description:
-  #             "Town02"
-  # - 
-  #   map_name: "Town03"
-  #   map_category: "semantic_prior"
-  #   settings:
-  #     fixed_delta_seconds: 0.01
-  #   captures: #log
-  #     - 
-  #       date: "2023-01-09"
-  #       time: "10-45-20"
-  #       timezone: "+0800"
-  #       capture_vehicle: "c0003"
-  #       location: "chengdu"
-  #       scenes:
-  #         - 
-  #           custom: False
-  #           collect_time: 2
-  #           keyframe_time: 0.5
-  #           ego_bp_name: "vehicle.tesla.model3"
-  #           calibrated_sensors:
-  #             !include ./configs/calibrated_sensors.yaml
-  #           description:
-  #             "Town03"
-  # - 
-  #   map_name: "Town04"
-  #   map_category: "semantic_prior"
-  #   settings:
-  #     fixed_delta_seconds: 0.01
-  #   captures: #log
-  #     - 
-  #       date: "2023-01-09"
-  #       time: "10-45-20"
-  #       timezone: "+0800"
-  #       capture_vehicle: "c0003"
-  #       location: "chengdu"
-  #       scenes:
-  #         - 
-  #           custom: False
-  #           collect_time: 2
-  #           keyframe_time: 0.5
-  #           ego_bp_name: "vehicle.tesla.model3"
-  #           calibrated_sensors:
-  #             !include ./configs/calibrated_sensors.yaml
-  #           description:
-  #             "Town04"
-  # - 
-  #   map_name: "Town05"
-  #   map_category: "semantic_prior"
-  #   settings:
-  #     fixed_delta_seconds: 0.01
-  #   captures: #log
-  #     - 
-  #       date: "2023-01-09"
-  #       time: "10-45-20"
-  #       timezone: "+0800"
-  #       capture_vehicle: "c0003"
-  #       location: "chengdu"
-  #       scenes:
-  #         - 
-  #           custom: False
-  #           collect_time: 2
-  #           keyframe_time: 0.5
-  #           ego_bp_name: "vehicle.tesla.model3"
-  #           calibrated_sensors:
-  #             !include ./configs/calibrated_sensors.yaml
-  #           description:
-  #             "Town05"
-  # - 
-  #   map_name: "Town07"
-  #   map_category: "semantic_prior"
-  #   settings:
-  #     fixed_delta_seconds: 0.01
-  #   captures: #log
-  #     - 
-  #       date: "2023-01-09"
-  #       time: "10-45-20"
-  #       timezone: "+0800"
-  #       capture_vehicle: "c0003"
-  #       location: "chengdu"
-  #       scenes:
-  #         - 
-  #           custom: False
-  #           collect_time: 2
-  #           keyframe_time: 0.5
-  #           ego_bp_name: "vehicle.tesla.model3"
-  #           calibrated_sensors:
-  #             !include ./configs/calibrated_sensors.yaml
-  #           description:
-  #             "Town07"
+              "Town05"
+  - 
+    map_name: "Town07"
+    map_category: "semantic_prior"
+    settings:
+      fixed_delta_seconds: 0.01
+    captures: #log
+      - 
+        date: "2023-01-09"
+        time: "10-45-20"
+        timezone: "+0800"
+        capture_vehicle: "c0003"
+        location: "chengdu"
+        scenes:
+          - 
+            custom: False
+            collect_time: 2
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Town07"
           
