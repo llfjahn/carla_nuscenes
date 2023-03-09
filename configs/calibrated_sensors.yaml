@@ -7,8 +7,8 @@ CameraRGBBaseOptions: &CameraRGBBaseOptions
   "blur_amount": "0.6"
   "motion_blur_intensity": "0.2"
   "motion_blur_max_distortion": "0.1"
-  "lens_flare_intensity": "0.6"
-  "bloom_intensity": "0.9"
+  "lens_flare_intensity": "0.3"
+  "bloom_intensity": "0.7"
 
 RadarBaseOptions: &RadarBaseOptions
   'horizontal_fov': '80'
