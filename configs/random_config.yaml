@@ -37,7 +37,7 @@ worlds:  #map
         scenes:
           - 
             custom: False
-            collect_time: 20
+            collect_time: 1
             keyframe_time: 0.5
             ego_bp_name: "vehicle.tesla.model3"
             calibrated_sensors:
