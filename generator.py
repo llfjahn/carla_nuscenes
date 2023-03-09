@@ -173,9 +173,9 @@ class Generator:
                             for idx,sample_data in enumerate(sensor.get_data_list()):
                                 ego_pose_token = self.dataset.update_ego_pose(scene_token,calibrated_sensors_token[sensor.name],*self.collect_client.get_ego_pose(sample_data))
                                 is_key_frame = False
-                                # print(idx)
-                                # print(sensor.get_data_list())
-                                # print(len(sensor.get_data_list())-1)
+                                print(idx)
+                                print(sensor.get_data_list())
+                                print(len(sensor.get_data_list())-1)
                                 if idx == len(sensor.get_data_list())-1:
                                     is_key_frame = True
                                 if is_key_frame:
