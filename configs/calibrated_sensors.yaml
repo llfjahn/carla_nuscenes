@@ -1,9 +1,12 @@
 CameraRGBBaseOptions: &CameraRGBBaseOptions
-  "image_size_x": "3200"
-  "image_size_y": "1800"
+  "image_size_x": "3200" #"1600"
+  "image_size_y": "1800" #"900"
   "sensor_tick": "0.083333"
   "fstop": "1.4"
-  "shutter_speed": "20.0"
+  "shutter_speed": "30.0"
+  "blur_amount": "0.6"
+  "motion_blur_intensity": "0.2"
+  "motion_blur_max_distortion": "0.1"
 
 RadarBaseOptions: &RadarBaseOptions
   'horizontal_fov': '80'
