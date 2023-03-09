@@ -1,11 +1,11 @@
-dataset:dataset:
-  root: "/media/artiv/DATA/Datasets/carlascene_dataset"
+dataset:
+  root: "/mnt/data_hdd/Dataset/carlascene_dataset"
   version: "v1.14"
 
 client:
   host: 127.0.0.1
   port: 2000
-  time_out: 10.0
+  time_out: 1000.0
 
 sensors:
   !include ./configs/sensors.yaml
@@ -21,7 +21,7 @@ visibility:
 
 worlds:  #map
   - 
-    map_name: "Town03"
+    map_name: "Town07"
     map_category: "semantic_prior"
     settings:
       fixed_delta_seconds: 0.01

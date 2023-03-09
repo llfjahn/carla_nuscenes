@@ -1,8 +1,8 @@
 CameraRGBBaseOptions: &CameraRGBBaseOptions
-  "image_size_x": "1600"
-  "image_size_y": "900"
+  "image_size_x": "3200"
+  "image_size_y": "1800"
   "sensor_tick": "0.083333"
-  "fstop": "1.8"
+  "fstop": "1.4"
   "shutter_speed": "20.0"
 
 RadarBaseOptions: &RadarBaseOptions

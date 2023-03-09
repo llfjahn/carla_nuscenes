@@ -82,28 +82,30 @@ class Generator:
             self.dataset.update_attribute(attribute["name"],category["description"])
         for visibility in self.config["visibility"]:
             self.dataset.update_visibility(visibility["description"],visibility["level"])
-
-        for scene_id in range(self.config["scene_count"]):
-            world_config = random.choice(self.config["worlds"])
-            try:
-                self.collect_client.generate_world(world_config)
-                map_token = self.dataset.update_map(world_config["map_name"],world_config["map_category"])
-                capture_config = random.choice(world_config["captures"])
-                log_token = self.dataset.update_log(map_token,capture_config["date"],capture_config["time"],
-                                        capture_config["timezone"],capture_config["capture_vehicle"],capture_config["location"])
-                scene_config = random.choice(capture_config["scenes"])
-                scene_config["description"] += str(scene_id)
-                print("current_scene_count:",self.dataset.data["current_scene_count"])
-                scene_token = self.add_one_scene(log_token,scene_id,scene_config)
-                self.dataset.update_scene_count()
-                self.dataset.save()
-            except:
-                traceback.print_exc()
-            finally:
-                self.collect_client.destroy_world()
+        i = 0
+        for world_config in self.config["worlds"]:
+            for scene_id in range(self.config["scene_count"]):
+                # world_config = random.choice(self.config["worlds"])
+                try:
+                    self.collect_client.generate_world(world_config)
+                    map_token = self.dataset.update_map(world_config["map_name"],world_config["map_category"])
+                    capture_config = random.choice(world_config["captures"])
+                    log_token = self.dataset.update_log(map_token,capture_config["date"],capture_config["time"],
+                                            capture_config["timezone"],capture_config["capture_vehicle"],capture_config["location"])
+                    scene_config = random.choice(capture_config["scenes"])
+                    scene_config["description"] += str(scene_id)
+                    print("current_scene_count:",self.dataset.data["current_scene_count"])
+                    scene_token = self.add_one_scene(log_token,scene_id,scene_config)
+                    self.dataset.update_scene_count()
+                    self.dataset.save()
+                except:
+                    traceback.print_exc()
+                finally:
+                    self.collect_client.destroy_world()
 
     def continue_generating_random_dataset(self):
         print("continue generating!")
+
         self.dataset = Dataset(**self.config["dataset"],load=True)
         for sensor in self.config["sensors"]:
             self.dataset.update_sensor(sensor["name"],sensor["modality"],False)
@@ -114,24 +116,28 @@ class Generator:
         for visibility in self.config["visibility"]:
             self.dataset.update_visibility(visibility["description"],visibility["level"],False)
 
-        for scene_id in range(self.dataset.data["current_scene_count"],self.config["scene_count"]):
-            world_config = random.choice(self.config["worlds"])
-            try:
-                self.collect_client.generate_world(world_config)
-                map_token = self.dataset.update_map(world_config["map_name"],world_config["map_category"])
-                capture_config = random.choice(world_config["captures"])
-                log_token = self.dataset.update_log(map_token,capture_config["date"],capture_config["time"],
-                                        capture_config["timezone"],capture_config["capture_vehicle"],capture_config["location"])
-                scene_config = random.choice(capture_config["scenes"])
-                scene_config["description"] += str(scene_id)
-                print("current_scene_count:",self.dataset.data["current_scene_count"])
-                scene_token = self.add_one_scene(log_token,scene_id,scene_config)
-                self.dataset.update_scene_count()
-                self.dataset.save()
-            except:
-                traceback.print_exc()
-            finally:
-                self.collect_client.destroy_world()
+
+        for world_config in self.config["worlds"]:
+
+            # for scene_id in range(self.dataset.data["current_scene_count"],self.config["scene_count"]):
+            for scene_id in range(0,self.config["scene_count"]):
+                # world_config = random.choice(self.config["worlds"])
+                try:
+                    self.collect_client.generate_world(world_config)
+                    map_token = self.dataset.update_map(world_config["map_name"],world_config["map_category"])
+                    capture_config = random.choice(world_config["captures"])
+                    log_token = self.dataset.update_log(map_token,capture_config["date"],capture_config["time"],
+                                            capture_config["timezone"],capture_config["capture_vehicle"],capture_config["location"])
+                    scene_config = random.choice(capture_config["scenes"])
+                    scene_config["description"] += str(scene_id)
+                    print("current_scene_count:",self.dataset.data["current_scene_count"])
+                    scene_token = self.add_one_scene(log_token,scene_id,scene_config)
+                    self.dataset.update_scene_count()
+                    self.dataset.save()
+                except:
+                    traceback.print_exc()
+                finally:
+                    self.collect_client.destroy_world()
 
     def add_one_scene(self,log_token,scene_id,scene_config):
         try:
@@ -152,6 +158,9 @@ class Generator:
                 calibrated_sensor_token = self.dataset.update_calibrated_sensor(scene_token,*self.collect_client.get_calibrated_sensor(sensor))
                 calibrated_sensors_token[sensor.name] = calibrated_sensor_token
                 samples_data_token[sensor.name] = ""
+
+
+
 
             sample_token = ""
             for frame_count in range(int(scene_config["collect_time"]/self.collect_client.settings.fixed_delta_seconds)):

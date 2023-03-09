@@ -338,16 +338,16 @@ class Client:
             "cloudiness":clamp(random.gauss(0,30)),
             "sun_azimuth_angle":random.random()*360,
             "sun_altitude_angle":random.random()*120-30,
-            "precipitation":clamp(random.gauss(0,30)),
-            "precipitation_deposits":clamp(random.gauss(0,30)),
+            "precipitation":clamp(random.gauss(0,100))*random.choice([0,0,0,1]),
+            "precipitation_deposits":clamp(random.gauss(0,100)),
             "wind_intensity":random.random()*100,
             "fog_density":clamp(random.gauss(0,30)),
             "fog_distance":random.random()*100,
-            "wetness":clamp(random.gauss(0,30)),
+            "wetness":clamp(random.gauss(0,100)),
             "fog_falloff":random.random()*5,
-            "scattering_intensity":max(random.random()*2-1,0),
-            "mie_scattering_scale":max(random.random()*2-1,0),
-            "rayleigh_scattering_scale":max(random.random()*2-1,0),
+            "scattering_intensity":max(random.random()*4-1,0),
+            "mie_scattering_scale":max(random.random()*4-1,0),
+            "rayleigh_scattering_scale":max(random.random()*2-1,0)*random.choice([0,0,0,1])+0.0331,
             "dust_storm":clamp(random.gauss(0,30))
         }
         return weather_param

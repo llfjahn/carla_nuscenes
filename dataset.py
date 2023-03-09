@@ -3,6 +3,7 @@ from utils import load,dump,generate_token
 import carla
 from sensor import parse_lidar_data,parse_radar_data
 import cv2
+import numpy as np
 
 def save_image(image,path):
     img = np.reshape(np.copy(image.raw_data), (image.height, image.width, 4)) 
