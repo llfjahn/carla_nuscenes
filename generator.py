@@ -72,7 +72,6 @@ class Generator:
 
     def generate_new_random_dataset(self):
         print("generate new dataset!")
-        print("Town: ",capture_config["location"])
         self.dataset = Dataset(**self.config["dataset"])
         self.dataset.save()
         for sensor in self.config["sensors"]:
@@ -91,6 +90,7 @@ class Generator:
                     self.collect_client.generate_world(world_config)
                     map_token = self.dataset.update_map(world_config["map_name"],world_config["map_category"])
                     capture_config = random.choice(world_config["captures"])
+                    print("Town: ",capture_config["location"])
                     log_token = self.dataset.update_log(map_token,capture_config["date"],capture_config["time"],
                                             capture_config["timezone"],capture_config["capture_vehicle"],capture_config["location"])
                     scene_config = random.choice(capture_config["scenes"])
@@ -106,7 +106,6 @@ class Generator:
 
     def continue_generating_random_dataset(self):
         print("continue generating!")
-        print("Town: ",capture_config["location"])
 
         self.dataset = Dataset(**self.config["dataset"],load=True)
         for sensor in self.config["sensors"]:
@@ -128,6 +127,7 @@ class Generator:
                     self.collect_client.generate_world(world_config)
                     map_token = self.dataset.update_map(world_config["map_name"],world_config["map_category"])
                     capture_config = random.choice(world_config["captures"])
+                    print("Town: ",capture_config["location"])
                     log_token = self.dataset.update_log(map_token,capture_config["date"],capture_config["time"],
                                             capture_config["timezone"],capture_config["capture_vehicle"],capture_config["location"])
                     scene_config = random.choice(capture_config["scenes"])
