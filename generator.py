@@ -184,7 +184,7 @@ class Generator:
                                     # print('key')
                                     samples_data_token[sensor.name] = self.dataset.update_sample_data(samples_data_token[sensor.name],calibrated_sensors_token[sensor.name],sample_token,ego_pose_token,is_key_frame,*self.collect_client.get_sample_data(sample_data))
 
-                    for instance in self.collect_client.walkers+self.collect_client.vehicles:
+                    for instance in self.collect_client.vehicles: #+ self.collect_client.walkers+
                         if self.collect_client.get_visibility(instance) > 0:
                             samples_annotation_token[instance.get_actor().id]  = self.dataset.update_sample_annotation(samples_annotation_token[instance.get_actor().id],sample_token,*self.collect_client.get_sample_annotation(scene_id,instance))
                     
