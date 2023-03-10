@@ -83,25 +83,25 @@ class Client:
         for vehicle in self.vehicles:
             self.trafficmanager.set_path(vehicle.get_actor(),vehicle.path)
 
-        self.walkers = [Walker(world=self.world,**walker_config) for walker_config in scene_config["walkers"]]
-        walkers_batch = [SpawnActor(walker.blueprint,walker.transform) for walker in self.walkers]
-        for i,response in enumerate(self.client.apply_batch_sync(walkers_batch)):
-            if not response.error:
-                self.walkers[i].set_actor(response.actor_id)
-            else:
-                print(response.error)
-        self.walkers = list(filter(lambda walker:walker.get_actor(),self.walkers))
+        # self.walkers = [Walker(world=self.world,**walker_config) for walker_config in scene_config["walkers"]]
+        # walkers_batch = [SpawnActor(walker.blueprint,walker.transform) for walker in self.walkers]
+        # for i,response in enumerate(self.client.apply_batch_sync(walkers_batch)):
+        #     if not response.error:
+        #         self.walkers[i].set_actor(response.actor_id)
+        #     else:
+        #         print(response.error)
+        # self.walkers = list(filter(lambda walker:walker.get_actor(),self.walkers))
 
-        walker_controller_bp = self.world.get_blueprint_library().find('controller.ai.walker')
-        walkers_controller_batch = [SpawnActor(walker_controller_bp,carla.Transform(),walker.get_actor()) for walker in self.walkers]
-        for i,response in enumerate(self.client.apply_batch_sync(walkers_controller_batch)):
-                    if not response.error:
-                        self.walkers[i].set_controller(response.actor_id)
-                    else:
-                        print(response.error)
+        # walker_controller_bp = self.world.get_blueprint_library().find('controller.ai.walker')
+        # walkers_controller_batch = [SpawnActor(walker_controller_bp,carla.Transform(),walker.get_actor()) for walker in self.walkers]
+        # for i,response in enumerate(self.client.apply_batch_sync(walkers_controller_batch)):
+        #             if not response.error:
+        #                 self.walkers[i].set_controller(response.actor_id)
+        #             else:
+        #                 print(response.error)
         self.world.tick()
-        for walker in self.walkers:
-            walker.start()
+        # for walker in self.walkers:
+        #     walker.start()
 
         self.sensors = [Sensor(world=self.world, attach_to=self.ego_vehicle.get_actor(), **sensor_config) for sensor_config in scene_config["calibrated_sensors"]["sensors"]]
         sensors_batch = [SpawnActor(sensor.blueprint,sensor.transform,sensor.attach_to) for sensor in self.sensors]
@@ -162,37 +162,37 @@ class Client:
                 print(response.error)
         self.vehicles = list(filter(lambda vehicle:vehicle.get_actor(),self.vehicles))
 
-        walker_bp_list = self.world.get_blueprint_library().filter("pedestrian")
-        self.walkers = []
-        for i in range(random.randint(len(spawn_points),len(spawn_points)*2)):
-            spawn = self.world.get_random_location_from_navigation()
-            if spawn != None:
-                bp_name=random.choice(walker_bp_list).id
-                spawn_location = {attr:getattr(spawn,attr) for attr in ["x","y","z"]}
-                destination=self.world.get_random_location_from_navigation()
-                destination_location={attr:getattr(destination,attr) for attr in ["x","y","z"]}
-                rotation = {"yaw":random.random()*360,"pitch":random.random()*360,"roll":random.random()*360}
-                self.walkers.append(Walker(world=self.world,location=spawn_location,rotation=rotation,destination=destination_location,bp_name=bp_name))
-            else:
-                print("walker generate fail")
-        walkers_batch = [SpawnActor(walker.blueprint,walker.transform) for walker in self.walkers]
-        for i,response in enumerate(self.client.apply_batch_sync(walkers_batch)):
-            if not response.error:
-                self.walkers[i].set_actor(response.actor_id)
-            else:
-                print(response.error)
-        self.walkers = list(filter(lambda walker:walker.get_actor(),self.walkers))
+        # walker_bp_list = self.world.get_blueprint_library().filter("pedestrian")
+        # self.walkers = []
+        # for i in range(random.randint(len(spawn_points),len(spawn_points)*2)):
+        #     spawn = self.world.get_random_location_from_navigation()
+        #     if spawn != None:
+        #         bp_name=random.choice(walker_bp_list).id
+        #         spawn_location = {attr:getattr(spawn,attr) for attr in ["x","y","z"]}
+        #         destination=self.world.get_random_location_from_navigation()
+        #         destination_location={attr:getattr(destination,attr) for attr in ["x","y","z"]}
+        #         rotation = {"yaw":random.random()*360,"pitch":random.random()*360,"roll":random.random()*360}
+        #         self.walkers.append(Walker(world=self.world,location=spawn_location,rotation=rotation,destination=destination_location,bp_name=bp_name))
+        #     else:
+        #         print("walker generate fail")
+        # walkers_batch = [SpawnActor(walker.blueprint,walker.transform) for walker in self.walkers]
+        # for i,response in enumerate(self.client.apply_batch_sync(walkers_batch)):
+        #     if not response.error:
+        #         self.walkers[i].set_actor(response.actor_id)
+        #     else:
+        #         print(response.error)
+        # self.walkers = list(filter(lambda walker:walker.get_actor(),self.walkers))
 
-        walker_controller_bp = self.world.get_blueprint_library().find('controller.ai.walker')
-        walkers_controller_batch = [SpawnActor(walker_controller_bp,carla.Transform(),walker.get_actor()) for walker in self.walkers]
-        for i,response in enumerate(self.client.apply_batch_sync(walkers_controller_batch)):
-                    if not response.error:
-                        self.walkers[i].set_controller(response.actor_id)
-                    else:
-                        print(response.error)
+        # walker_controller_bp = self.world.get_blueprint_library().find('controller.ai.walker')
+        # walkers_controller_batch = [SpawnActor(walker_controller_bp,carla.Transform(),walker.get_actor()) for walker in self.walkers]
+        # for i,response in enumerate(self.client.apply_batch_sync(walkers_controller_batch)):
+        #             if not response.error:
+        #                 self.walkers[i].set_controller(response.actor_id)
+        #             else:
+        #                 print(response.error)
         self.world.tick()
-        for walker in self.walkers:
-            walker.start()
+        # for walker in self.walkers:
+        #     walker.start()
 
         self.sensors = [Sensor(world=self.world, attach_to=self.ego_vehicle.get_actor(), **sensor_config) for sensor_config in scene_config["calibrated_sensors"]["sensors"]]
         sensors_batch = [SpawnActor(sensor.blueprint,sensor.transform,sensor.attach_to) for sensor in self.sensors]
@@ -208,10 +208,10 @@ class Client:
         print("generate random scene success!")        
 
     def destroy_scene(self):
-        if self.walkers is not None:
-            for walker in self.walkers:
-                walker.controller.stop()
-                walker.destroy()
+        # if self.walkers is not None:
+        #     for walker in self.walkers:
+        #         walker.controller.stop()
+        #         walker.destroy()
         if self.vehicles is not None:
             for vehicle in self.vehicles:
                 vehicle.destroy()
