@@ -151,7 +151,7 @@ class Generator:
             self.collect_client.generate_scene(scene_config)
             scene_token = self.dataset.update_scene(log_token,scene_id,scene_config["description"])
 
-            for instance in self.collect_client.walkers+self.collect_client.vehicles:
+            for instance in self.collect_client.vehicles: #+self.collect_client.walkers+
                 instance_token = self.dataset.update_instance(*self.collect_client.get_instance(scene_id,instance))
                 instances_token[instance.get_actor().id] = instance_token
                 samples_annotation_token[instance.get_actor().id] = ""
