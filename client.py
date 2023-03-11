@@ -150,11 +150,15 @@ class Client:
 
         vehicle_bp_list = self.world.get_blueprint_library().filter("vehicle")
         self.vehicles = []
+        i = 0
         for spawn_point in spawn_points[1:random.randint(1,len(spawn_points))]:
             location = {attr:getattr(spawn_point.location,attr) for attr in ["x","y","z"]}
             rotation = {attr:getattr(spawn_point.rotation,attr) for attr in ["yaw","pitch","roll"]}
             bp_name = random.choice(vehicle_bp_list).id
-            self.vehicles.append(Vehicle(world=self.world,bp_name=bp_name,location=location,rotation=rotation))
+            if (i % 2) == 0:
+                self.vehicles.append(Vehicle(world=self.world,bp_name=bp_name,location=location,rotation=rotation))
+            i+=1
+        i = 0
         vehicles_batch = [SpawnActor(vehicle.blueprint,vehicle.transform)
                             .then(SetAutopilot(FutureActor, True, self.trafficmanager.get_port())) 
                             for vehicle in self.vehicles]
