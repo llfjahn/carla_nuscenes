@@ -165,7 +165,7 @@ class Generator:
 
 
             sample_token = ""
-            for i in range(50):
+            for i in range(100):
                 for frame_count in range(int(scene_config["collect_time"]/self.collect_client.settings.fixed_delta_seconds)):
                     # print("frame count:",frame_count)
                     self.collect_client.tick()
@@ -191,6 +191,7 @@ class Generator:
                         
                         for sensor in self.collect_client.sensors:
                             sensor.get_data_list().clear()
+                print('Weather count: ' + str(i))
                 self.collect_client.change_random_weather()    
         finally:
             self.collect_client.destroy_scene()
