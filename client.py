@@ -38,7 +38,7 @@ class Client:
         print("generate world success!")
 
     def change_random_weather(self, scene_config):
-        self.weather = getattr(carla.WeatherParameters, scene_config["weather_mode"])
+        self.weather = carla.WeatherParameters(**self.get_random_weather())
         self.world.set_weather(self.weather)
 
     def generate_scene(self,scene_config):
