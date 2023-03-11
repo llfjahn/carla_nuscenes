@@ -37,6 +37,10 @@ class Client:
         self.world.set_pedestrians_cross_factor(1)
         print("generate world success!")
 
+    def change_random_weather(self, scene_config):
+        self.weather = getattr(carla.WeatherParameters, scene_config["weather_mode"])
+        self.world.set_weather(self.weather)
+
     def generate_scene(self,scene_config):
         print("generate scene start!")
         if scene_config["custom"]:
