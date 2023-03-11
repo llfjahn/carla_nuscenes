@@ -165,30 +165,32 @@ class Generator:
 
 
             sample_token = ""
-            for frame_count in range(int(scene_config["collect_time"]/self.collect_client.settings.fixed_delta_seconds)):
-                # print("frame count:",frame_count)
-                self.collect_client.tick()
-                if (frame_count+1)%int(scene_config["keyframe_time"]/self.collect_client.settings.fixed_delta_seconds) == 0:
-                    sample_token = self.dataset.update_sample(sample_token,scene_token,*self.collect_client.get_sample())
-                    for sensor in self.collect_client.sensors:
-                        if sensor.bp_name in ['sensor.camera.rgb','sensor.other.radar','sensor.lidar.ray_cast']:
-                            for idx,sample_data in enumerate(sensor.get_data_list()):
-                                ego_pose_token = self.dataset.update_ego_pose(scene_token,calibrated_sensors_token[sensor.name],*self.collect_client.get_ego_pose(sample_data))
-                                is_key_frame = False
-                                # print(idx)
-                                # # print(sensor.get_data_list())
-                                # print(len(sensor.get_data_list())-1)
-                                if idx == len(sensor.get_data_list())-1:
-                                    is_key_frame = True
-                                if is_key_frame:
-                                    # print('key')
-                                    samples_data_token[sensor.name] = self.dataset.update_sample_data(samples_data_token[sensor.name],calibrated_sensors_token[sensor.name],sample_token,ego_pose_token,is_key_frame,*self.collect_client.get_sample_data(sample_data))
+            for i in range(50):
+                for frame_count in range(int(scene_config["collect_time"]/self.collect_client.settings.fixed_delta_seconds)):
+                    # print("frame count:",frame_count)
+                    self.collect_client.tick()
+                    if (frame_count+1)%int(scene_config["keyframe_time"]/self.collect_client.settings.fixed_delta_seconds) == 0:
+                        sample_token = self.dataset.update_sample(sample_token,scene_token,*self.collect_client.get_sample())
+                        for sensor in self.collect_client.sensors:
+                            if sensor.bp_name in ['sensor.camera.rgb','sensor.other.radar','sensor.lidar.ray_cast']:
+                                for idx,sample_data in enumerate(sensor.get_data_list()):
+                                    ego_pose_token = self.dataset.update_ego_pose(scene_token,calibrated_sensors_token[sensor.name],*self.collect_client.get_ego_pose(sample_data))
+                                    is_key_frame = False
+                                    # print(idx)
+                                    # # print(sensor.get_data_list())
+                                    # print(len(sensor.get_data_list())-1)
+                                    if idx == len(sensor.get_data_list())-1:
+                                        is_key_frame = True
+                                    if is_key_frame:
+                                        # print('key')
+                                        samples_data_token[sensor.name] = self.dataset.update_sample_data(samples_data_token[sensor.name],calibrated_sensors_token[sensor.name],sample_token,ego_pose_token,is_key_frame,*self.collect_client.get_sample_data(sample_data))
 
-                    for instance in self.collect_client.vehicles: #+ self.collect_client.walkers+
-                        if self.collect_client.get_visibility(instance) > 0:
-                            samples_annotation_token[instance.get_actor().id]  = self.dataset.update_sample_annotation(samples_annotation_token[instance.get_actor().id],sample_token,*self.collect_client.get_sample_annotation(scene_id,instance))
-                    
-                    for sensor in self.collect_client.sensors:
-                        sensor.get_data_list().clear()
+                        for instance in self.collect_client.vehicles: #+ self.collect_client.walkers+
+                            if self.collect_client.get_visibility(instance) > 0:
+                                samples_annotation_token[instance.get_actor().id]  = self.dataset.update_sample_annotation(samples_annotation_token[instance.get_actor().id],sample_token,*self.collect_client.get_sample_annotation(scene_id,instance))
+                        
+                        for sensor in self.collect_client.sensors:
+                            sensor.get_data_list().clear()
+                self.collect_client.change_random_weather()    
         finally:
             self.collect_client.destroy_scene()
